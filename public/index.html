@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for index.html */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .book-clipart {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .book-clipart img {
+            width: 150px;
+            height: auto;
+            margin: 0 10px;
+        }
+
+        .book-form {
+            margin-bottom: 20px;
+        }
+
+        .book-form input,
+        .book-form button {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: calc(100% - 20px);
+        }
+
+        .book-form button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .book-list-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            width: 150px;
+            margin: 0 auto;
+        }
+
+        .book-list-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Express Bookstore</h1>
+        <div class="book-clipart">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?fit=crop&w=150&q=80" alt="Book Clipart">
+            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?fit=crop&w=150&q=80" alt="Book Clipart">
+            <img src="https://images.unsplash.com/photo-1473755504818-b72b6dfdc226?fit=crop&w=150&q=80" alt="Book Clipart">
+        </div>
+        <form id="addBookForm" class="book-form">
+            <input type="text" id="isbn" placeholder="ISBN" required>
+            <input type="text" id="amazon_url" placeholder="Amazon URL" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <input type="text" id="language" placeholder="Language" required>
+            <input type="number" id="pages" placeholder="Pages" required>
+            <input type="text" id="publisher" placeholder="Publisher" required>
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="number" id="year" placeholder="Year" required>
+            <button type="submit">Add Book</button>
+        </form>
+        <a href="bookList.html" class="book-list-link">Book List</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Function to handle form submission
+        document.getElementById('addBookForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const isbn = document.getElementById('isbn').value;
+            const amazon_url = document.getElementById('amazon_url').value;
+            const author = document.getElementById('author').value;
+            const language = document.getElementById('language').value;
+            const pages = parseInt(document.getElementById('pages').value, 10); // Convert to integer
+            const publisher = document.getElementById('publisher').value;
+            const title = document.getElementById('title').value;
+            const year = parseInt(document.getElementById('year').value, 10); // Convert to integer
+
+            try {
+                const response = await axios.post('http://localhost:3000/books', {
+                    isbn,
+                    amazon_url,
+                    author,
+                    language,
+                    pages,
+                    publisher,
+                    title,
+                    year
+                });
+                alert('Book added successfully!');
+                document.getElementById('addBookForm').reset(); // Clear form fields after successful submission
+            } catch (error) {
+                console.error('Error adding book:', error.response ? error.response.data : error.message);
+                alert('Failed to add book. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /*background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;*/
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.book-clipart {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.book-clipart img {
+  width: 150px;
+  height: auto;
+  margin: 0 10px;
+}
+
+.book-form input,
+.book-form button {
+  display: block;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px auto;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.book-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.book-form button:hover {
+  background-color: #0056b3;
+}
+
+#message {
+  margin: 20px 0;
+  font-size: 1.2em;
+}
+
+.book-list-link,
+.back-to-home {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.book-list-link:hover,
+.back-to-home:hover {
+  background-color: #0056b3;
+}
+
+.book-list-container {
+  margin: 20px 0;
+}
+
+.book {
+  display: flex;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.book img.book-cover {
+  width: 100px;
+  height: 150px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.book-details {
+  flex: 1;
+}
+
+.book-details p {
+  margin: 5px 0;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
